@@ -5,26 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WEA"
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        d:DesignHeight="600" d:DesignWidth="1200" Background="#7EBE8E">
+        d:DesignHeight="900" d:DesignWidth="1400" Background="#7EBE8E" Loaded="Window_Loaded" Width="1400" Height="900">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".8*"></ColumnDefinition>
-            <ColumnDefinition Width=".2*"></ColumnDefinition>
+            <ColumnDefinition Width="1200"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="250"></RowDefinition>
+            <RowDefinition Height="500"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
         </Grid.RowDefinitions>
         <Border Grid.ColumnSpan="2"></Border>
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Margin="25, 10">
-            <Path Width="25" Height="25" Stretch="Fill" Fill="#4C4949" Data="F1 M 38,3.16666C 57.2379,3.16666 72.8333,18.7621 72.8333,38C 72.8333,57.2379 57.2379,72.8333 38,72.8333C 18.7621,72.8333 3.16667,57.2379 3.16667,38C 3.16667,18.7621 18.7621,3.16666 38,3.16666 Z M 52.252,18.9974L 36.4164,18.9974L 23.75,39.5833L 34.8333,39.5833L 25.3316,60.1667L 50.6667,34.8333L 38,34.8333L 52.252,18.9974 Z "/>
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" Width="1200" Height="48" >
             <StackPanel Margin="10, 0">
-                <TextBlock FontSize="22" Foreground="White">Time Energy</TextBlock>
-                <TextBlock FontSize="14" Foreground="#7CFFFFFF">03.24.2013</TextBlock>
+                <TextBlock FontSize="22" Foreground="White">효과도 분석</TextBlock>
+                <TextBlock x:Name="txtDate" FontSize="14" Foreground="#7CFFFFFF">03.24.2013</TextBlock>
             </StackPanel>
         </StackPanel>
-        <lvc:CartesianChart Name="Chart" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="15">
+        <Grid Grid.Row="1" Background="#A0FFFFFF" Width="1200" Height="250">
+            <ComboBox x:Name="comboMaterial" materialDesign:HintAssist.Hint="Search" materialDesign:TextFieldAssist.HasClearButton="True" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.HelperText="재질을 선택하시오" Height="45" VerticalAlignment="Top" HorizontalAlignment="Left" Width="107" Margin="20,20,0,0" Background="#7FFFFFFF" SelectionChanged="comboMaterial_SelectionChanged"/>
+            <TextBox x:Name="txtTargetDepth" materialDesign:HintAssist.Hint="표적 두께[mm]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="145,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="3" Background="#7FFFFFFF" TextChanged="txtTargetDepth_TextChanged"/>
+            <TextBox x:Name="txtTargetArea" materialDesign:HintAssist.Hint="표적 면적[cm]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="230,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="1" Background="#7FFFFFFF" TextChanged="txtTargetArea_TextChanged"/>
+            <TextBox x:Name="txtTargetDensity" materialDesign:HintAssist.Hint="표적 밀도[gm/cm³]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="315,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="7.87" Background="#7FFFFFFF" IsEnabled="False"/>
+            <TextBox x:Name="txtTargetWeight" materialDesign:HintAssist.Hint="표적 질량[gm]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="400,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="2.361" Background="#7FFFFFFF" IsEnabled="False"/>
+            <TextBox x:Name="txtSpecificHeat" materialDesign:HintAssist.Hint="비열[J/gm.°C]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="485,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="0.452" Background="#7FFFFFFF" IsEnabled="False"/>
+            <TextBox x:Name="txtMeltingPoint" materialDesign:HintAssist.Hint="용융점[°C]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="570,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="1425" Background="#7FFFFFFF" IsEnabled="False"/>
+            <TextBox x:Name="txtVaporizationPoint" materialDesign:HintAssist.Hint="기화점[°C]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="655,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="2971" Background="#7FFFFFFF" IsEnabled="False"/>
+            <TextBox x:Name="txtMoltenLatentHeat" materialDesign:HintAssist.Hint="용융잠열[J/gm]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="740,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="250" Background="#7FFFFFFF" IsEnabled="False"/>
+            <TextBox x:Name="txtVaporizationLatentHeat" materialDesign:HintAssist.Hint="기화잠열[J/gm]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="825,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="6200" Background="#7FFFFFFF" IsEnabled="False"/>
+            <TextBox x:Name="txtTemp" materialDesign:HintAssist.Hint="대기 온도[C]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="145,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="25" Background="#7FFFFFFF"/>
+            <TextBox x:Name="txtTime" materialDesign:HintAssist.Hint="레이저 조사시간[s]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="230,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="5" Background="#7FFFFFFF"/>
+            <TextBox x:Name="txtLoss" materialDesign:HintAssist.Hint="대기에 의한 손실[%]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" HorizontalAlignment="Left" Height="40" Margin="315,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" Text="5" Background="#7FFFFFFF"/>
+            <TextBlock x:Name="txtQ1" HorizontalAlignment="Left" Margin="145,187,0,0" TextWrapping="Wrap" Text="Q1" VerticalAlignment="Top" Background="#7FFFFFFF" Width="80" Height="20" TextAlignment="Center"/>
+            <TextBlock x:Name="txtQ2" HorizontalAlignment="Left" Margin="230,187,0,0" TextWrapping="Wrap" Text="Q2" VerticalAlignment="Top" RenderTransformOrigin="0.315,-0.251" Background="#7FFFFFFF" Width="80" Height="20" TextAlignment="Center"/>
+            <TextBlock x:Name="txtQ3" HorizontalAlignment="Left" Margin="315,187,0,0" TextWrapping="Wrap" Text="Q3" VerticalAlignment="Top" RenderTransformOrigin="3.062,-3.312" Width="80" Height="20" Background="#7FFFFFFF" TextAlignment="Center"/>
+            <TextBlock x:Name="txtQ4" HorizontalAlignment="Left" Margin="400,187,0,0" TextWrapping="Wrap" Text="Q4" VerticalAlignment="Top" Background="#7FFFFFFF" Width="80" Height="20" TextAlignment="Center"/>
+            <TextBlock x:Name="txtQtotal" HorizontalAlignment="Left" Margin="485,187,0,0" TextWrapping="Wrap" Text="Qtotal" VerticalAlignment="Top" Background="#7FFFFFFF" Width="80" Height="20" TextAlignment="Center"/>
+            <TextBlock x:Name="txtPtotal" HorizontalAlignment="Left" Margin="570,187,0,0" TextWrapping="Wrap" Text="Ptotal" VerticalAlignment="Top" Background="#7FFFFFFF" Width="80" Height="20" TextAlignment="Center"/>
+            <TextBlock x:Name="txtPneed" HorizontalAlignment="Left" Margin="655,187,0,0" TextWrapping="Wrap" Text="Pneed" VerticalAlignment="Top" Background="#7FFFFFFF" Width="80" Height="20" TextAlignment="Center"/>
+            <Button Content="계산" HorizontalAlignment="Left" Margin="419,113,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+            <TextBlock HorizontalAlignment="Left" Margin="145,162,0,0" TextWrapping="Wrap" Text="Q1[J/cm²]" VerticalAlignment="Top" Background="#33000000" Width="80" TextAlignment="Center" Height="20"/>
+            <TextBlock HorizontalAlignment="Left" Margin="230,162,0,0" TextWrapping="Wrap" Text="Q2[J/cm²]" VerticalAlignment="Top" Width="80" Height="20" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="315,162,0,0" TextWrapping="Wrap" Text="Q3[J/cm²]" VerticalAlignment="Top" Width="80" Height="20" TextAlignment="Center" Background="#33000000" RenderTransformOrigin="1.062,0.7"/>
+            <TextBlock HorizontalAlignment="Left" Margin="400,162,0,0" TextWrapping="Wrap" Text="Q4[J/cm²]" VerticalAlignment="Top" Width="80" Height="20" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="485,162,0,0" TextWrapping="Wrap" Text="Qtotal[J/cm²]" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Height="20" Width="80" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="570,162,0,0" TextWrapping="Wrap" Text="Ptotal[Watt]" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Width="80" Height="20" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="655,162,0,0" TextWrapping="Wrap" Text="Pneed[Watt]" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Width="80" Height="20" Background="#33000000" TextAlignment="Center"/>
+        </Grid>
+        <lvc:CartesianChart Name="Chart" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="1300" Height="500" >
             <lvc:CartesianChart.Series>
                 <lvc:LineSeries Values="{Binding Values}" LineSmoothness="1" StrokeThickness="2" 
                                 DataLabels="True" FontSize="12" Foreground="Black"
@@ -45,16 +77,14 @@
                 </lvc:Axis>
             </lvc:CartesianChart.AxisY>
         </lvc:CartesianChart>
-        <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Background="#4CFFFFFF" Height="270" VerticalAlignment="Top">
-            <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Center" Margin="0,20,0,0">Peak Time Today</TextBlock>
-            <TextBlock Foreground="White" FontSize="30" HorizontalAlignment="Center">7:08 am</TextBlock>
-            <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Center" Margin="0,20,0,0">Peak Value Today</TextBlock>
-            <TextBlock Foreground="White" FontSize="30" HorizontalAlignment="Center">525 kWh</TextBlock>
-            <TextBlock Foreground="White" FontSize="16" HorizontalAlignment="Center" Margin="0,20,0,0">Day Average</TextBlock>
-            <TextBlock Foreground="White" FontSize="30" HorizontalAlignment="Center">354 kWh</TextBlock>
+        <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Height="200" VerticalAlignment="Top" Background="#A0FFFFFF">
+            <TextBlock Foreground="Black" FontSize="16" HorizontalAlignment="Center">입력 변수</TextBlock>
+            <TextBox x:Name="txtPower" Foreground="Black" FontSize="12" materialDesign:HintAssist.Hint="출력[watt]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Height="36" HorizontalAlignment="Center" Text="5000" Width="100" />
+            <TextBox x:Name="txtWavelength" Foreground="Black" FontSize="12" materialDesign:HintAssist.Hint="파장[um]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Height="36" HorizontalAlignment="Center" Text="1.064" Width="100" />
+            <TextBox x:Name="txtInputDiameter" Foreground="Black" FontSize="12" materialDesign:HintAssist.Hint="입력 빔 직경[m]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Height="36" HorizontalAlignment="Center" Text="0.05" Width="100" />
+            <TextBox x:Name="txtOutputDiameter" Foreground="Black" FontSize="12" materialDesign:HintAssist.Hint="타겟빔 직경[m]" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Height="36" HorizontalAlignment="Center" Text="0.02" Width="100" />
         </StackPanel>
-        <Button Grid.Column="1" Grid.Row="1" Width="40" Height="40" VerticalAlignment="Top" Panel.ZIndex="1"
-                    Click="UpdateOnclick" Margin="0, 180, 0, 0">
+        <Button Grid.Column="1" Grid.Row="2" Width="40" Height="40" VerticalAlignment="Top" Panel.ZIndex="1" Click="UpdateOnclick" Margin="0, 180, 0, 0">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>
@@ -71,5 +101,36 @@
                 </ControlTemplate>
             </Button.Template>
         </Button>
+        <Grid Grid.Row="3" Grid.ColumnSpan="2" Background="#A0FFFFFF" Height="70">
+            <TextBlock HorizontalAlignment="Left" Margin="50,10,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Background="#33000000" Width="80" TextAlignment="Center" Height="20"/>
+            <TextBlock HorizontalAlignment="Left" Margin="146,10,0,0" TextWrapping="Wrap" Text="200" VerticalAlignment="Top" Width="80" Height="20" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="242,10,0,0" TextWrapping="Wrap" Text="300" VerticalAlignment="Top" Width="80" Height="20" TextAlignment="Center" Background="#33000000" RenderTransformOrigin="1.062,0.7"/>
+            <TextBlock HorizontalAlignment="Left" Margin="338,10,0,0" TextWrapping="Wrap" Text="400" VerticalAlignment="Top" Width="80" Height="20" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="434,10,0,0" TextWrapping="Wrap" Text="500" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Height="20" Width="80" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="530,10,0,0" TextWrapping="Wrap" Text="600" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Width="80" Height="20" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="626,10,0,0" TextWrapping="Wrap" Text="700" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Width="80" Height="20" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="722,10,0,0" TextWrapping="Wrap" Text="800" VerticalAlignment="Top" Background="#33000000" Width="80" TextAlignment="Center" Height="20"/>
+            <TextBlock HorizontalAlignment="Left" Margin="818,10,0,0" TextWrapping="Wrap" Text="900" VerticalAlignment="Top" Width="80" Height="20" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="914,10,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="80" Height="20" TextAlignment="Center" Background="#33000000" RenderTransformOrigin="1.062,0.7"/>
+            <TextBlock HorizontalAlignment="Left" Margin="1010,10,0,0" TextWrapping="Wrap" Text="2000" VerticalAlignment="Top" Width="80" Height="20" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="1106,10,0,0" TextWrapping="Wrap" Text="3000" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Height="20" Width="80" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="1202,10,0,0" TextWrapping="Wrap" Text="4000" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Width="80" Height="20" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Margin="1298,10,0,0" TextWrapping="Wrap" Text="5000" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Width="80" Height="20" Background="#33000000" TextAlignment="Center"/>
+            <TextBlock x:Name="txtDiameter100" HorizontalAlignment="Left" Margin="50,35,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Background="#7FFFFFFF" Width="80" TextAlignment="Center" Height="20"/>
+            <TextBlock x:Name="txtDiameter200" HorizontalAlignment="Left" Margin="146,35,0,0" TextWrapping="Wrap" Text="200" VerticalAlignment="Top" Width="80" Height="20" Background="#7FFFFFFF" TextAlignment="Center"/>
+            <TextBlock x:Name="txtDiameter300" HorizontalAlignment="Left" Margin="242,35,0,0" TextWrapping="Wrap" Text="300" VerticalAlignment="Top" Width="80" Height="20" TextAlignment="Center" Background="#7FFFFFFF" RenderTransformOrigin="1.062,0.7"/>
+            <TextBlock x:Name="txtDiameter400" HorizontalAlignment="Left" Margin="338,35,0,0" TextWrapping="Wrap" Text="400" VerticalAlignment="Top" Width="80" Height="20" Background="#7FFFFFFF" TextAlignment="Center"/>
+            <TextBlock x:Name="txtDiameter500" HorizontalAlignment="Left" Margin="434,35,0,0" TextWrapping="Wrap" Text="500" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Height="20" Width="80" Background="#7FFFFFFF" TextAlignment="Center"/>
+            <TextBlock x:Name="txtDiameter600" HorizontalAlignment="Left" Margin="530,35,0,0" TextWrapping="Wrap" Text="600" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Width="80" Height="20" Background="#7FFFFFFF" TextAlignment="Center"/>
+            <TextBlock x:Name="txtDiameter700" HorizontalAlignment="Left" Margin="626,35,0,0" TextWrapping="Wrap" Text="700" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Width="80" Height="20" Background="#7FFFFFFF" TextAlignment="Center"/>
+            <TextBlock x:Name="txtDiameter800" HorizontalAlignment="Left" Margin="722,35,0,0" TextWrapping="Wrap" Text="800" VerticalAlignment="Top" Background="#7FFFFFFF" Width="80" TextAlignment="Center" Height="20"/>
+            <TextBlock x:Name="txtDiameter900" HorizontalAlignment="Left" Margin="818,35,0,0" TextWrapping="Wrap" Text="900" VerticalAlignment="Top" Width="80" Height="20" Background="#7FFFFFFF" TextAlignment="Center"/>
+            <TextBlock x:Name="txtDiameter1000" HorizontalAlignment="Left" Margin="914,35,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="80" Height="20" TextAlignment="Center" Background="#7FFFFFFF" RenderTransformOrigin="1.062,0.7"/>
+            <TextBlock x:Name="txtDiameter2000" HorizontalAlignment="Left" Margin="1010,35,0,0" TextWrapping="Wrap" Text="2000" VerticalAlignment="Top" Width="80" Height="20" Background="#7FFFFFFF" TextAlignment="Center"/>
+            <TextBlock x:Name="txtDiameter3000" HorizontalAlignment="Left" Margin="1106,35,0,0" TextWrapping="Wrap" Text="3000" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Height="20" Width="80" Background="#7FFFFFFF" TextAlignment="Center"/>
+            <TextBlock x:Name="txtDiameter4000" HorizontalAlignment="Left" Margin="1202,35,0,0" TextWrapping="Wrap" Text="4000" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Width="80" Height="20" Background="#7FFFFFFF" TextAlignment="Center"/>
+            <TextBlock x:Name="txtDiameter5000" HorizontalAlignment="Left" Margin="1298,35,0,0" TextWrapping="Wrap" Text="5000" VerticalAlignment="Top" RenderTransformOrigin="14.438,0.812" Width="80" Height="20" Background="#7FFFFFFF" TextAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="랜즈   직경   [m]" VerticalAlignment="Top" Background="#33FFFF00" Width="45" TextAlignment="Center" Height="50" IsEnabled="False" Margin="0,5,0,0"/>
+        </Grid>
     </Grid>
 </Window>

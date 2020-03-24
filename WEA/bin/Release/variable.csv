@@ -1,0 +1,11 @@
+﻿NAME,TargetDensity,SpecificHeat,MeltingPoint,VaporizationPoint,MoltenLatentHeat,VaporizationLatentHeat
+Steel,7.87,0.452,1425,2971,250,6200
+Aluminum,2.7,0.91,660,2467,321,10500
+Copper,8.96,0.38,1100,2600,210,4700
+Magnesium,1.74,1,650,1100,370,5300
+Iron,7.9,0.46,1500,3000,250,6300
+Titanium,4.5,0.52,1700,3700,320,8800
+CarbonTetrachloride,0,0,0,0,174,0
+CarbonDioxide,0.001795,0,0,0,184,574
+Polycarbonate,1.22,1.3,230,450.6,0,0
+new,1.22,1.3,230,450.6,0,0

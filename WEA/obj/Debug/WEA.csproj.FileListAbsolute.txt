@@ -19,4 +19,10 @@ C:\github\WEA\WEA\obj\Debug\WEA.csproj.CoreCompileInputs.cache
 C:\github\WEA\WEA\obj\Debug\WEA.csproj.CopyComplete
 C:\github\WEA\WEA\obj\Debug\WEA.exe
 C:\github\WEA\WEA\obj\Debug\WEA.pdb
+C:\github\WEA\WEA\bin\Debug\MaterialDesignColors.dll
+C:\github\WEA\WEA\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\github\WEA\WEA\bin\Debug\MaterialDesignColors.pdb
+C:\github\WEA\WEA\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\github\WEA\WEA\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\github\WEA\WEA\obj\Debug\App.baml
 C:\github\WEA\WEA\obj\Debug\WEA.csprojAssemblyReference.cache
