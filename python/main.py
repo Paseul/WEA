@@ -1,6 +1,8 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QTabWidget, QVBoxLayout
 import efficientWidget
+import lambertWidget
+import modtranWidget
 
 class MyApp(QWidget):
 
@@ -10,8 +12,8 @@ class MyApp(QWidget):
 
     def initUI(self):
         tab1 = efficientWidget.CWidget()
-        tab2 = QWidget()
-        tab3 = QWidget()
+        tab2 = lambertWidget.CWidget()
+        tab3 = modtranWidget.CWidget()
 
         tabs = QTabWidget()
         tabs.addTab(tab1, '레이저 효과도')

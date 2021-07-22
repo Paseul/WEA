@@ -360,6 +360,7 @@ class CWidget(QWidget):
 
         self.slider.setRange(0, int(max(self.pNeed5)))
         self.ax.legend()
+        self.ax.grid(True)
         self.ax.set_ylim([0, 1000])
         self.ax.set_xlabel('Time[s]')
         self.ax.set_ylabel('Power[W]')

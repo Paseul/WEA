@@ -37,19 +37,6 @@ class CWidget(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.divergence = 0
-        self.beamArea = 0
-        self.q = []
-        self.u1 = []
-        self.u2 = []
-        self.u3 = []
-        self.spotSize = []
-        self.spotArea = []
-        self.area = []
-        self.transmittance1 = []
-        self.transmittance2 = []
-        self.transmittance3 = []
-
         self.initUI()
 
     def initUI(self):
@@ -185,6 +172,9 @@ class CWidget(QWidget):
         beamAreaBox.addWidget(self.beamAreaLabel)
         beamAreaBox.addWidget(self.beamAreaEdit)
 
+        self.Label = QLabel(self)
+        parameterBox.addWidget(self.Label)
+
         # 그래프
         graphBox = QHBoxLayout()
         box.addLayout(graphBox)
@@ -205,6 +195,18 @@ class CWidget(QWidget):
         self.show()
 
     def calculate(self):
+        self.divergence = 0
+        self.beamArea = 0
+        self.q = []
+        self.u1 = []
+        self.u2 = []
+        self.u3 = []
+        self.spotSize = []
+        self.spotArea = []
+        self.area = []
+        self.transmittance1 = []
+        self.transmittance2 = []
+        self.transmittance3 = []
         self.pTarget1 = []
         self.pTarget2 = []
         self.pTarget3 = []
@@ -217,7 +219,7 @@ class CWidget(QWidget):
 
         self.x = np.arange(0, int(self.distanceEdit.toPlainText())+100, 100)
         self.x[0] = 1
-        print(self.x)
+
         for i in range(len(self.x)):
             self.q.append(0.585*pow(self.x[i] * 0.001, 1/3))
             self.u1.append((3.912 / float(self.visibility1Edit.toPlainText())) * (
@@ -251,18 +253,12 @@ class CWidget(QWidget):
         self.ax.plot(self.x, self.pTarget3, label=self.visibility3Edit.toPlainText())
 
         self.ax.legend()
+        self.ax.grid(True)
+        self.ax.set_xlabel('Time[s]')
+        self.ax.set_ylabel('Power[W]')
         self.ax.set_ylim([min(self.pTarget1)-100, float(self.laserPowerEdit.toPlainText())+100])
         self.canvas.mpl_connect('button_press_event', DataCursor(self.ax))
         self.canvas.draw()
-
-    def comboSelect(self):
-        self.targetDensityEdit.setText(self.data_list[self.combo.currentIndex()][1])
-        self.specificHeatEdit.setText(self.data_list[self.combo.currentIndex()][2])
-        self.meltingPointEdit.setText(self.data_list[self.combo.currentIndex()][3])
-        self.vaporPointEdit.setText(self.data_list[self.combo.currentIndex()][4])
-        self.meltingLatentEdit.setText(self.data_list[self.combo.currentIndex()][5])
-        self.vaporLatentEdit.setText(self.data_list[self.combo.currentIndex()][6])
-
 
 
 if __name__ == '__main__':
