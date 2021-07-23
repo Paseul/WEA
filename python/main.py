@@ -25,7 +25,7 @@ class MyApp(QWidget):
 
         self.setLayout(vbox)
 
-        self.setWindowTitle('레이저 효과도 분석 프로그램')
+        self.setWindowTitle('레이저 출력 분석 프로그램')
         self.show()
 
 

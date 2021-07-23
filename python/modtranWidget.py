@@ -396,7 +396,7 @@ class CWidget(QWidget):
 
         self.ax.legend()
         self.ax.grid(True)
-        self.ax.set_xlabel('Time[s]')
+        self.ax.set_xlabel('Distance[m]')
         self.ax.set_ylabel('Power[W]')
         self.ax.set_ylim([min(self.winterHazyPower)-100, float(self.laserPowerEdit.toPlainText())+100])
         self.canvas.mpl_connect('button_press_event', DataCursor(self.ax))
