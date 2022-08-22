@@ -220,6 +220,11 @@ class CWidget(QWidget):
         self.x = np.arange(0, int(self.distanceEdit.toPlainText())+100, 100)
         self.x[0] = 1
 
+        if (float(self.visibility1Edit.toPlainText()) == 0 or float(self.visibility2Edit.toPlainText()) == 0 or float(
+                self.visibility3Edit.toPlainText()) == 0):
+            QMessageBox.information(self, 'Warning', '가시거리는 0으로 입력할 수 없습니다')
+            return
+
         for i in range(len(self.x)):
             self.q.append(0.585*pow(self.x[i] * 0.001, 1/3))
             self.u1.append((3.912 / float(self.visibility1Edit.toPlainText())) * (
